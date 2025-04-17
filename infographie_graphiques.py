@@ -45,8 +45,8 @@ def load_and_clean_csv(filepath, sep=',', numeric_columns=None):
     return df
 
 # Chargement des données
-donnees = load_and_clean_csv("/var/www/html/temp-python/donnees_cleaned.csv", sep=',', numeric_columns=['duration_seconds'])
-intentions = load_and_clean_csv("/var/www/html/temp-python/Intentions_par_session.csv", sep=',')
+donnees = load_and_clean_csv("donnees_cleaned.csv", sep=',', numeric_columns=['duration_seconds'])
+intentions = load_and_clean_csv("Intentions_par_session.csv", sep=',')
 
 # Configuration du style global pour les graphiques Matplotlib
 plt.style.use('default')
