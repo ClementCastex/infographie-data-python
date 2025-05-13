@@ -3,312 +3,133 @@
 
 <head>
     <meta charset="UTF-8">
-    <meta name=", viewport" content="width=device-width, initial-scale=1.0">
-    <title>Analyse des Données</title>
-    <style>
-        body {
-            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-            line-height: 1.6;
-            color: #333;
-            max-width: 1200px;
-            margin: 0 auto;
-            padding: 20px;
-            background-color: #f5f5f5;
-        }
-
-        h1 {
-            text-align: center;
-            color: #2c3e50;
-            margin-bottom: 40px;
-        }
-
-        .section {
-            display: flex;
-            align-items: center;
-            margin-bottom: 50px;
-            background: white;
-            border-radius: 10px;
-            box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
-            overflow: hidden;
-        }
-
-        .section:nth-child(even) {
-            display: flex;
-            flex-direction: row-reverse;
-
-        }
-
-        .text-content {
-            flex: 1;
-            padding: 30px;
-        }
-
-        .image-content {
-            flex: 1;
-            padding: 20px;
-            text-align: center;
-            cursor: pointer;
-        }
-
-        .image-content img {
-            max-width: 100%;
-            height: auto;
-            border-radius: 5px;
-            transition: transform 0.3s ease;
-        }
-
-        .image-content img:hover {
-            transform: scale(1.02);
-        }
-
-        h2 {
-            color: #3498db;
-            margin-top: 0;
-        }
-
-        /* Lightbox styles */
-        .lightbox {
-            display: none;
-            position: fixed;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            background-color: rgba(0, 0, 0, 0.9);
-            z-index: 1000;
-            justify-content: center;
-            align-items: center;
-        }
-
-        .lightbox.active {
-            display: flex;
-        }
-
-        .lightbox img {
-            max-width: 90%;
-            max-height: 90vh;
-            border-radius: 5px;
-        }
-
-        .close-lightbox {
-            position: absolute;
-            top: 20px;
-            right: 30px;
-            color: white;
-            font-size: 40px;
-            cursor: pointer;
-            transition: color 0.3s ease;
-        }
-
-        .close-lightbox:hover {
-            color: #3498db;
-        }
-
-        .csv-container {
-            max-height: 250px;
-            overflow-y: auto;
-            margin-top: 10px;
-            border: 1px solid #ddd;
-            border-radius: 5px;
-            background-color: white;
-        }
-
-        /* Optionnel : styles de tableau */
-        .csv-container table {
-            width: 100%;
-            border-collapse: collapse;
-        }
-
-        .csv-container th,
-        .csv-container td {
-            border: 1px solid #ccc;
-            padding: 8px;
-            text-align: left;
-        }
-
-        .csv-container th {
-            background-color: #3498db;
-            color: white;
-            position: sticky;
-            top: 0;
-            z-index: 1;
-        }
-
-        .csv-wrapper {
-            margin-top: 20px;
-        }
-
-        .csv-header {
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            font-weight: bold;
-            background-color: #f3f3f3;
-            padding: 10px;
-            border-radius: 5px;
-        }
-
-        .toggle-btn {
-            background: none;
-            border: none;
-            color: #3498db;
-            cursor: pointer;
-            font-size: 14px;
-            text-decoration: underline;
-        }
-
-
-        @media (max-width: 768px) {
-            .section {
-                display: flex;
-                flex-direction: column;
-            }
-
-            .section:nth-child(even) {
-                display: flex;
-                flex-direction: column;
-            }
-
-            .text-content,
-            .image-content {
-                padding: 20px;
-            }
-        }
-    </style>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Analyse de la Campagne Publicitaire</title>
+    <link rel="stylesheet" href="styles.css">
 </head>
 
 <body>
-    <h1>Analyse de la Campagne Publicitaire – Thé Noir Darjeeling Bio</h1>
+    <div class="container">
+        <h1>Analyse de la Campagne Publicitaire</h1>
+        <p class="text-center">Thé Noir Darjeeling Bio</p>
 
-    <!-- Lightbox container -->
-    <div class="lightbox" id="lightbox">
-        <span class="close-lightbox">&times;</span>
-        <img src="" alt="Image en grand format">
-    </div>
-
-    <div class="section">
-        <div class="text-content">
-            <h2>Pages les plus visitées</h2>
-            <p>Ce graphique met en évidence les 10 pages les plus consultées sur notre site web. Il nous permet
-                d’identifier les contenus qui génèrent le plus d’intérêt, révélant les thématiques les plus populaires
-                ou les parcours utilisateur les plus fréquents. Ces données sont précieuses pour adapter notre stratégie
-                éditoriale et optimiser la navigation.</p>
-
+        <!-- Lightbox container -->
+        <div class="lightbox" id="lightbox">
+            <span class="close-lightbox">&times;</span>
+            <img src="" alt="Image en grand format">
         </div>
-        <div class="image-content" on, click="openLightbox('top_pages.png')">
-            <img src="top_pages.png" alt="Top 10 des pages les plus visitées">
-        </div>
-    </div>
 
-    <div class="section">
-        <div class="text-content">
-            <h2>Durée des actions</h2>
-            <p>Cette représentation illustre le temps total passé par les utilisateurs sur chaque type d’action
-                disponible sur le site (consultation, recherche, interaction, etc.). Elle met en lumière les activités
-                les plus engageantes et peut orienter nos choix en matière d’amélioration fonctionnelle ou de contenu
-                pour maximiser l’engagement utilisateur.</p>
-
-        </div>
-        <div class="image-content" on, click="openLightbox('action_minutes.png')">
-            <img src="action_minutes.png" alt="Durée des actions">
-        </div>
-    </div>
-
-    <div class="section">
-        <div class="text-content">
-            <h2>Répartition géographique</h2>
-            <p>Le graphique présente les 10 principales villes d’origine de nos visiteurs. Cette répartition
-                géographique permet d’identifier nos zones d’influence, de mieux cibler nos campagnes de communication,
-                et de prendre des décisions localisées pour des actions marketing ou commerciales spécifiques.</p>
-
-        </div>
-        <div class="image-content" on, click="openLightbox('cities.png')">
-            <img src="cities.png" alt="Répartition géographique">
-        </div>
-    </div>
-
-    <div class="section">
-        <div class="text-content">
-            <h2>Répartition par appareil</h2>
-            <p>Ce graphique circulaire montre la répartition des utilisateurs en fonction du type d’appareil utilisé
-                pour naviguer (, mobile, ordinateur, , tablette). Cette donnée est essentielle pour adapter notre site à
-                la
-                réalité du comportement des visiteurs, garantir une expérience fluide sur tous les supports, et orienter
-                nos choix en responsive design.</p>
-
-        </div>
-        <div class="image-content" on, click="openLightbox('devices.png')">
-            <img src="devices.png" alt="Répartition par appareil">
-        </div>
-    </div>
-
-    <div class="section">
-        <div class="text-content">
-            <h2>Produits les plus populaires</h2>
-            <p>Ce graphique met en avant les 10 produits les plus achetés par nos clients. Il reflète les tendances de
-                consommation, les préférences du marché et les articles à fort potentiel. Ces informations sont utiles
-                pour adapter nos stocks, améliorer notre offre et renforcer les efforts marketing autour des
-                best-sellers.</p>
-
-        </div>
-        <div class="image-content" on, click="openLightbox('products.png')">
-            <img src="products.png" alt="Produits les plus populaires">
-        </div>
-    </div>
-
-    <div class="section">
-        <div class="text-content">
-            <h2>Analyse des intentions</h2>
-            <p>Cette visualisation catégorise les visites en fonction de leur intention : commerciale (exploration,
-                comparaison) ou transactionnelle (achat, action ciblée). Elle nous aide à comprendre le comportement des
-                utilisateurs, à identifier les parcours de conversion, et à ajuster notre stratégie de contenu en
-                fonction des objectifs utilisateurs.</p>
-
-        </div>
-        <div class="image-content" on, click="openLightbox('intentions.png')">
-            <img src="intentions.png" alt="Analyse des intentions">
-        </div>
-    </div>
-
-    <div class="section">
-        <div class="text-content">
-            <h2>Évolution des sessions</h2>
-            <p>Ce graphique temporel retrace le nombre de sessions journalières sur une période donnée. Il met en
-                évidence les pics de fréquentation, les jours creux et les tendances générales, nous permettant
-                d’identifier les périodes les plus actives et d’optimiser nos campagnes en fonction du trafic.</p>
-
-        </div>
-        <div class="image-content" on, click="openLightbox('sessions_par_jour.png')">
-            <img src="sessions_par_jour.png" alt="Évolution des sessions">
-        </div>
-    </div>
-    <div class="section">
-        <div class="text-content">
-            <h2>Sources des données</h2>
-            <p>Les tableaux ci-dessous affichent le contenu des fichiers CSV utilisés pour les visualisations. Seules
-                les premières lignes sont visibles par défaut. Vous pouvez faire défiler pour voir plus de données.</p>
-            <div class="csv-wrapper">
-                <div class="csv-header">
-                    <h3>📊 donnees.csv</h3>
-                    <button class="toggle-btn">Voir plus</button>
-                </div>
-                <div class="csv-container" id="table-donnees" style="display: none;"></div>
+        <!-- Section 1 -->
+        <section class="section">
+            <div class="text-content">
+                <h2>Pages les plus visitées</h2>
+                <p>Ce graphique met en évidence les 10 pages les plus consultées sur notre site web. Il nous permet
+                    d'identifier les contenus qui génèrent le plus d'intérêt, révélant les thématiques les plus
+                    populaires ou les parcours utilisateur les plus fréquents.</p>
             </div>
-
-            <div class="csv-wrapper">
-                <div class="csv-header">
-                    <h3>📊 Intentions_par_session.csv</h3>
-                    <button class="toggle-btn">Voir plus</button>
-                </div>
-                <div class="csv-container" id="table-intentions" style="display: none;"></div>
+            <div class="image-content" onclick="openLightbox('top_pages.png')">
+                <img src="top_pages.png" alt="Top 10 des pages les plus visitées">
             </div>
-        </div>
+        </section>
+
+        <!-- Section 2 -->
+        <section class="section">
+            <div class="text-content">
+                <h2>Durée des actions</h2>
+                <p>Cette représentation illustre le temps total passé par les utilisateurs sur chaque type d'action
+                    disponible sur le site. Elle met en lumière les activités les plus engageantes.</p>
+            </div>
+            <div class="image-content" onclick="openLightbox('action_minutes.png')">
+                <img src="action_minutes.png" alt="Durée des actions">
+            </div>
+        </section>
+
+        <!-- Section 3 -->
+        <section class="section">
+            <div class="text-content">
+                <h2>Répartition géographique</h2>
+                <p>Le graphique présente les 10 principales villes d'origine de nos visiteurs. Cette répartition
+                    géographique permet d'identifier nos zones d'influence.</p>
+            </div>
+            <div class="image-content" onclick="openLightbox('cities.png')">
+                <img src="cities.png" alt="Répartition géographique">
+            </div>
+        </section>
+
+        <!-- Section 4 -->
+        <section class="section">
+            <div class="text-content">
+                <h2>Répartition par appareil</h2>
+                <p>Ce graphique circulaire montre la répartition des utilisateurs en fonction du type d'appareil utilisé
+                    pour naviguer.</p>
+            </div>
+            <div class="image-content" onclick="openLightbox('devices.png')">
+                <img src="devices.png" alt="Répartition par appareil">
+            </div>
+        </section>
+
+        <!-- Section 5 -->
+        <section class="section">
+            <div class="text-content">
+                <h2>Produits les plus populaires</h2>
+                <p>Ce graphique met en avant les 10 produits les plus achetés par nos clients. Il reflète les tendances
+                    de consommation et les préférences du marché.</p>
+            </div>
+            <div class="image-content" onclick="openLightbox('products.png')">
+                <img src="products.png" alt="Produits les plus populaires">
+            </div>
+        </section>
+
+        <!-- Section 6 -->
+        <section class="section">
+            <div class="text-content">
+                <h2>Analyse des intentions</h2>
+                <p>Cette visualisation catégorise les visites en fonction de leur intention : commerciale ou
+                    transactionnelle.</p>
+            </div>
+            <div class="image-content" onclick="openLightbox('intentions.png')">
+                <img src="intentions.png" alt="Analyse des intentions">
+            </div>
+        </section>
+
+        <!-- Section 7 -->
+        <section class="section">
+            <div class="text-content">
+                <h2>Évolution des sessions</h2>
+                <p>Ce graphique temporel retrace le nombre de sessions journalières sur une période donnée.</p>
+            </div>
+            <div class="image-content" onclick="openLightbox('sessions_par_jour.png')">
+                <img src="sessions_par_jour.png" alt="Évolution des sessions">
+            </div>
+        </section>
+
+        <!-- Section 8 - Sources des données -->
+        <section class="section">
+            <div class="text-content">
+                <h2>Sources des données</h2>
+                <p>Les tableaux ci-dessous affichent le contenu des fichiers CSV utilisés pour les visualisations.</p>
+
+                <div class="csv-wrapper">
+                    <div class="csv-header">
+                        <span>📊 donnees.csv</span>
+                        <button class="toggle-btn" onclick="toggleTable('table-donnees')">Voir plus</button>
+                    </div>
+                    <div id="table-donnees" class="csv-container"></div>
+                </div>
+
+                <div class="csv-wrapper">
+                    <div class="csv-header">
+                        <span>📊 Intentions_par_session.csv</span>
+                        <button class="toggle-btn" onclick="toggleTable('table-intentions')">Voir plus</button>
+                    </div>
+                    <div id="table-intentions" class="csv-container"></div>
+                </div>
+            </div>
+        </section>
     </div>
-
-
-
 
     <script>
+        // Lightbox
         function openLightbox(imageSrc) {
             const lightbox = document.getElementById('lightbox');
             const lightboxImg = lightbox.querySelector('img');
@@ -316,24 +137,33 @@
             lightbox.classList.add('active');
         }
 
-        document.querySelector('.close-lightbox').addEventListener(', click', function () {
+        document.querySelector('.close-lightbox').addEventListener('click', function () {
             document.getElementById('lightbox').classList.remove('active');
         });
 
-        // Close lightbox when , clicking outside the image
-        document.getElementById('lightbox').addEventListener(', click', function (e) {
+        document.getElementById('lightbox').addEventListener('click', function (e) {
             if (e.target === this) {
                 this.classList.remove('active');
             }
         });
 
-        // Close lightbox with Escape key
         document.addEventListener('keydown', function (e) {
             if (e.key === 'Escape') {
                 document.getElementById('lightbox').classList.remove('active');
             }
         });
 
+        // Table toggle
+        function toggleTable(tableId) {
+            const table = document.getElementById(tableId);
+            const button = table.previousElementSibling.querySelector('button');
+            const isVisible = !table.classList.contains('hidden');
+
+            table.classList.toggle('hidden');
+            button.textContent = isVisible ? 'Voir plus' : 'Voir moins';
+        }
+
+        // Load CSV data
         async function loadCSVToTable(file, containerId) {
             const response = await fetch(file);
             const text = await response.text();
@@ -358,15 +188,6 @@
 
         loadCSVToTable('donnees_cleaned.csv', 'table-donnees');
         loadCSVToTable('Intentions_par_session.csv', 'table-intentions');
-
-        document.querySelectorAll('.toggle-btn').forEach(btn => {
-            btn.addEventListener('click', () => {
-                const container = btn.closest('.csv-wrapper').querySelector('.csv-container');
-                const isVisible = container.style.display === 'block';
-                container.style.display = isVisible ? 'none' : 'block';
-                btn.textContent = isVisible ? 'Voir plus' : 'Voir moins';
-            });
-        });
     </script>
 </body>
 
